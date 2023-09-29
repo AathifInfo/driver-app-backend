@@ -142,7 +142,7 @@ public class VehicleInformationServiceImpl implements VehicleInformationService 
             logger.info("VehicleInformationServiceImpl() -> getAllVehicleInformation() -> ended");
             return new ResponseEntity<>(vehicleInformation, HttpStatus.OK);
         } catch (Exception e){
-            logger.error("VehicleInformationServiceImpl -> deleteAllVehicleInformation() -> error: {}", e.getMessage());
+            logger.error("VehicleInformationServiceImpl -> getAllVehicleInformation() -> error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
