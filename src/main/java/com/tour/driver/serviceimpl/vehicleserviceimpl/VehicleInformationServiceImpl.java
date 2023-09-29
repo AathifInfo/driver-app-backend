@@ -53,10 +53,10 @@ public class VehicleInformationServiceImpl implements VehicleInformationService 
             Optional<VehicleInformation> vehicleInformationData = vehicleInformationRepository.findById(id);
 
             if (vehicleInformationData.isPresent()){
-                logger.info("VehicleInformationServiceImpl -> getVehicleInformationWithName() -> started");
+                logger.info("VehicleInformationServiceImpl -> getVehicleById() -> started");
                 return new ResponseEntity<>(vehicleInformationData.get(), HttpStatus.OK);
             }else {
-                logger.info("VehicleInformationServiceImpl -> getVehicleInformationWithName() -> ended");
+                logger.info("VehicleInformationServiceImpl -> getVehicleById() -> ended");
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
@@ -69,13 +69,13 @@ public class VehicleInformationServiceImpl implements VehicleInformationService 
     @Override
     public ResponseEntity<VehicleInformation> updateVehicleInformation(long id, VehicleInformationDTO vehicleInformationDTO) {
         try {
-            logger.info("VehicleInformationServiceImpl -> getVehicleInformationWithName() -> started");
+            logger.info("VehicleInformationServiceImpl -> updateVehicleInformation() -> started");
             Optional<VehicleInformation> vehicleInformationData = vehicleInformationRepository.findById(id);
 
             if (vehicleInformationData.isPresent()){
                 VehicleInformation vehicleInformationList = getVehicleInformation(vehicleInformationDTO, vehicleInformationData);
 
-                logger.info("VehicleInformationServiceImpl -> getVehicleInformationWithName() -> ended");
+                logger.info("VehicleInformationServiceImpl -> updateVehicleInformation() -> ended");
                 return new ResponseEntity<>(vehicleInformationRepository.save(vehicleInformationList), HttpStatus.OK);
             }else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
