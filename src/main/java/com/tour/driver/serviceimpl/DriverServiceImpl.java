@@ -57,7 +57,7 @@ public class DriverServiceImpl implements DriverService {
             return new ResponseEntity<>(drivers, HttpStatus.OK);
 
         } catch (Exception e){
-            logger.error("DriverServiceImpl -> getAllDrivers() -> error: {}", e.getMessage());
+            logger.error("DriverServiceImpl -> getDrivers() -> error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

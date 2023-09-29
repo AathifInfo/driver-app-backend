@@ -82,24 +82,25 @@ public class VehicleImageServiceImpl implements VehicleImageService {
     @Override
     public ResponseEntity<VehicleImage> updateVehicleImage(long id, VehicleImageDTO vehicleImageDTO) {
         try {
-            logger.info("VehicleImageServiceImpl() ->  getVehicleImageById() -> started");
+            logger.info("VehicleImageServiceImpl() ->  updateVehicleImage() -> started");
             Optional<VehicleImage> vehicleImageData = vehicleImageRepository.findById(id);
 
             if (vehicleImageData.isPresent()){
                 VehicleImage vehicleImage = getVehicleImageData(vehicleImageData, vehicleImageDTO);
 
-                logger.info("VehicleImageServiceImpl() ->  getVehicleImageById() -> ended");
+                logger.info("VehicleImageServiceImpl() ->  updateVehicleImage() -> ended");
                 return new ResponseEntity<>(vehicleImageRepository.save(vehicleImage), HttpStatus.OK);
 
             }
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e){
-            logger.error("VehicleImageServiceImpl() ->  getVehicleImageById() -> error: {}", e.getMessage());
+            logger.error("VehicleImageServiceImpl() ->  updateVehicleImage() -> error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     private static VehicleImage getVehicleImageData(Optional<VehicleImage> vehicleImageData, VehicleImageDTO vehicleImageDTO) {
+        logger.info("VehicleImageServiceImpl() ->  getVehicleImageData() -> started");
         if (vehicleImageData.isPresent()){
             VehicleImage vehicleImage = vehicleImageData.get();
 
@@ -108,6 +109,7 @@ public class VehicleImageServiceImpl implements VehicleImageService {
             vehicleImage.setSideImage(vehicleImageDTO.getSideImage());
             vehicleImage.setTopImage(vehicleImageDTO.getTopImage());
 
+            logger.info("VehicleImageServiceImpl() ->  getVehicleImageData() -> ended");
             return vehicleImage;
         }
         return null;

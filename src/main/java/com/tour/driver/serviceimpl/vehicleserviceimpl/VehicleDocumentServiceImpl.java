@@ -99,6 +99,7 @@ public class VehicleDocumentServiceImpl implements VehicleDocumentService {
     }
 
     private static VehicleDocument getVehicleDocumentData(Optional<VehicleDocument> vehicleDocumentData, VehicleDocumentDTO vehicleDocumentDTO) {
+        logger.info("VehicleDocumentServiceImpl() ->  getVehicleDocumentData() -> started");
         if (vehicleDocumentData.isPresent()){
             VehicleDocument vehicleDocument = vehicleDocumentData.get();
 
@@ -108,6 +109,7 @@ public class VehicleDocumentServiceImpl implements VehicleDocumentService {
             vehicleDocument.setInspectionNo(vehicleDocumentDTO.getInspectionNo());
             vehicleDocument.setProofOfOwnership(vehicleDocumentDTO.getProofOfOwnership());
 
+            logger.info("VehicleDocumentServiceImpl() ->  getVehicleDocumentData() -> started");
             return vehicleDocument;
         }
         return null;
@@ -136,7 +138,7 @@ public class VehicleDocumentServiceImpl implements VehicleDocumentService {
             logger.info("VehicleDocumentServiceImpl() ->  deleteAllVehicleDocuments() -> started");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e){
-            logger.error("VehicleDocumentServiceImpl() ->  deleteVehicleDocumentById() -> error: {}", e.getMessage());
+            logger.error("VehicleDocumentServiceImpl() ->  deleteAllVehicleDocuments() -> error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
